@@ -129,7 +129,7 @@ contract LiquidityGaugeFactory is Authentication {
 
         address gauge = Clones.clone(gaugeImplementation);
 
-        ILiquidityGauge(gauge).initialize(pool);
+        ILiquidityGaugeInitializable(gauge).initialize(pool);
 
         _isGaugeFromFactory[gauge] = true;
         _poolGauge[pool] = gauge;
