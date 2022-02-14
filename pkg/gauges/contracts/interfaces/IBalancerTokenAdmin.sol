@@ -14,6 +14,17 @@
 
 pragma solidity ^0.7.0;
 
-interface IBalancerTokenAdmin {
+import "@balancer-labs/v2-solidity-utils/contracts/helpers/IAuthentication.sol";
+import "@balancer-labs/v2-vault/contracts/interfaces/IVault.sol";
+
+import "./interfaces/IBalancerToken.sol";
+
+interface IBalancerTokenAdmin is IAuthentication {
+    function getVault() external view returns (IVault);
+
+    function getBalancerToken() external view returns (IBalancerToken);
+
+    function activate() external;
+
     function mint(address to, uint256 amount) external;
 }
